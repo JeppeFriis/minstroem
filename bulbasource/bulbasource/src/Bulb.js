@@ -12,11 +12,7 @@ class Bulb extends React.Component {
         }
     }
 
-    onSourceClick = (data, index) => {
-        this.setState({
-            activeIndex: index,
-        });
-    };
+
 
     renderActiveShape = (props) => {
         const RADIAN = Math.PI / 180;
@@ -34,7 +30,7 @@ class Bulb extends React.Component {
         
         return (
             <g>
-            <Sector className="pie-sector-scale-animation"
+            <Sector
                 cx={cx}
                 cy={cy}
                 innerRadius={innerRadius}
@@ -91,7 +87,7 @@ class Bulb extends React.Component {
                             animationEasing = 'ease'
                             stroke = "#fefcad"
                             strokeWidth = "0.3%"
-                            onClick = {this.onSourceClick}
+                            onClick = {this.props.onSourceClick}
                             labelLine = {false}
                             label = {this.renderCustomizedLabel}
                         >

@@ -21,7 +21,7 @@
 }
 
 .recharts-pie-labels {
-  color: "#222222";
+  color: --dark;
   font-weight: 600;
   font-size: 2.5vmin;
 }

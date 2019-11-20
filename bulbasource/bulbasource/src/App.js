@@ -12,10 +12,14 @@ class App extends React.Component {
 	constructor(props) {
         super(props);
         this.state = {
-            data: [{name: "", value: 0, color: "#222222"}],
+			data: [{name: "", value: 0, color: "#222222"}],
+			infoData: [],
+			showInfo: false
         };
 
-        this.handleData = this.handleData.bind(this);
+		this.handleData = this.handleData.bind(this);
+		this.onSourceClick = this.onSourceClick.bind(this);
+		this.onInfoBoxClose = this.onInfoBoxClose.bind(this);
     }
     
 	componentDidMount() {
@@ -26,7 +30,17 @@ class App extends React.Component {
 		this.setState({data: data});
 	}
 
-	onSourceClick(source) {
+	onSourceClick(sourceData) {
+		this.setState({
+			infoData: sourceData,
+			showInfo: true
+		})
+	}
+
+	onInfoBoxClose() {
+		this.setState({
+			showInfo: false
+		})
 	}
 
   	render() {
@@ -34,7 +48,12 @@ class App extends React.Component {
 			<div>
 				<Header></Header>
 				<Bulb data={this.state.data} onSourceClick={this.onSourceClick}></Bulb>
-				<Info></Info>
+
+				{this.state.showInfo ? 
+					<Info infoData={this.state.infoData} onInfoBoxClose={this.onInfoBoxClose}></Info>	
+				:
+					null
+				}
 			</div>
 		);
   	}

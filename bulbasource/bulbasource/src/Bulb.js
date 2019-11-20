@@ -81,7 +81,7 @@ class Bulb extends React.Component {
             <div className="center">
                 <img id="bulb" src="/bulb.png"></img>
                 <ResponsiveContainer id="pie-chart-container" width="200%" aspect={1}>
-                    <PieChart>
+                    <PieChart id="pie-svg">
                         <Pie 
                             activeIndex={this.state.activeIndex}
                             activeShape={this.renderActiveShape} 

@@ -12,7 +12,7 @@ class App extends React.Component {
 	constructor(props) {
         super(props);
         this.state = {
-			data: [{name: "", value: 0, color: "#222222"}],
+			data: [[{name: "", value: 0, color: "#222222"}]],
 			infoData: [],
 			showInfo: false
         };
@@ -38,6 +38,8 @@ class App extends React.Component {
 	}
 
 	onInfoBoxClose() {
+		document.documentElement.style = ".info-box-animation"
+
 		this.setState({
 			showInfo: false
 		})
@@ -47,7 +49,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<Header></Header>
-				<Bulb data={this.state.data} onSourceClick={this.onSourceClick}></Bulb>
+				<Bulb data={this.state.data[0]} onSourceClick={this.onSourceClick}></Bulb>
 
 				{this.state.showInfo ? 
 					<Info infoData={this.state.infoData} onInfoBoxClose={this.onInfoBoxClose}></Info>	

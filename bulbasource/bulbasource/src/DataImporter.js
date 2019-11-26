@@ -11,7 +11,7 @@ function ElectricityProductionDataQuery(callback) {
     };
 
     $.ajax({
-        url: 'https://api.energidataservice.dk/datastore_search_sql?sql=SELECT * from "electricitybalancenonv" WHERE "PriceArea" = \'DK1\' AND "TotalLoad" >= 0 ORDER BY "HourUTC" ASC LIMIT 1',
+        url: 'https://api.energidataservice.dk/datastore_search_sql?sql=SELECT * from "electricitybalancenonv" WHERE "PriceArea" = \'DK1\' AND "TotalLoad" >= 0 ORDER BY "HourUTC" ASC LIMIT 24',
         dataType: 'jsonp',
         cache: true,
         success: function(data) {
@@ -27,6 +27,9 @@ function ElectricityProductionDataQuery(callback) {
 }
 
 function FormatProductionData(data, callback) {
+    // This function should be formatting all production data. And return an array of data from different points in time
+    
+    // This is obsolete, because we request data only from the relevant PriceArea
     var record = data.result.records.find(rcd => {
         return rcd.PriceArea === PriceArea;
     }); 

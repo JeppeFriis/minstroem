@@ -34,50 +34,57 @@ function FormatProductionData(data, callback) {
         return rcd.PriceArea === PriceArea;
     }); 
 
-    const importedData = [
-        {name: "Biomasse", value:  record.Biomass, color: "#2ed573"},
-        {name: "Fossil Gas", value: record.FossilGas, color: "#ff7f50"},
-        {name: "Fossil Kul", value: record.FossilHardCoal, color: "#0D1321"},
-        {name: "Fossil Olie", value: record.FossilOil, color: "#0D1321"},
-        {name: "Vandkraft", value: record.HydroPower, color: "#5EB1BF"},
-        {name: "Andet vedvarende", value: record.OtherRenewable, color: "#56E39F"}, /* 587B7F */
-        {name: "Solenergi", value: record.SolarPower, color: "#F28F3B"},
-        {name: "Affald", value: record.Waste, color: "#ffa502"},
-        {name: "Vindenergi", value: record.OnshoreWindPower + record.OffshoreWindPower, color: "#70a1ff"},
-        {name: "Import Europa", value: record.ExchangeContinent, color: "#1e90ff"},
-        {name: "Import Norden", value: record.ExchangeNordicCountries, color: "#5352ed"}
-    ];
+    var importedDataSet = [];
 
-    var totalValue = 0;
-    var usableData = [];
+    for(var i = 0; i < data.result.records.length; i++) {
+        var importedDataRow = [
+            {name: "Biomasse", value:  data.result.records[i].Biomass, color: "#2ed573"},
+            {name: "Fossil Gas", value: data.result.records[i].FossilGas, color: "#ff7f50"},
+            {name: "Fossil Kul", value: data.result.records[i].FossilHardCoal, color: "#0D1321"},
+            {name: "Fossil Olie", value: data.result.records[i].FossilOil, color: "#0D1321"},
+            {name: "Vandkraft", value: data.result.records[i].HydroPower, color: "#5EB1BF"},
+            {name: "Andet vedvarende", value: data.result.records[i].OtherRenewable, color: "#56E39F"}, /* 587B7F */
+            {name: "Solenergi", value: data.result.records[i].SolarPower, color: "#F28F3B"},
+            {name: "Affald", value: data.result.records[i].Waste, color: "#ffa502"},
+            {name: "Vindenergi", value: data.result.records[i].OnshoreWindPower + record.OffshoreWindPower, color: "#70a1ff"},
+            {name: "Import Europa", value: data.result.records[i].ExchangeContinent, color: "#1e90ff"},
+            {name: "Import Norden", value: data.result.records[i].ExchangeNordicCountries, color: "#5352ed"}
+        ];
 
+        var totalValue = 0;
+        var positiveData = [];
 
-    for(var i = 0; i < importedData.length; i++) {
-        if (importedData[i].value > 0) {
-            usableData.push(importedData[i]);
-            totalValue += importedData[i].value;
+        for(var i = 0; i < importedDataRow.length; i++) {
+            if (importedDataRow[i].value > 0) {
+                positiveData.push(importedDataRow[i]);
+                totalValue += importedDataRow[i].value;
+            }
         }
-    }
 
-    const cutoff = 0.025;
+        const cutoff = 0.025;
 
-    var formattedData = [];
-    var otherData = {name: "Andre", value: 0};
+        var formattedData = [];
+        var otherData = {name: "Andre", value: 0};
 
-    for(var i = 0; i < usableData.length; i++) {
-        if (usableData[i].value/totalValue > cutoff) {
-            formattedData.push(usableData[i]);
-        } else {
-            otherData.value += usableData[i];
+        for(var i = 0; i < positiveData.length; i++) {
+            if (positiveData[i].value/totalValue > cutoff) {
+                formattedData.push(positiveData[i]);
+            } else {
+                otherData.value += positiveData[i];
+            }
         }
+
+
+        if (otherData.value/totalValue > cutoff) {
+            formattedData.push(otherData);
+        }
+
+        importedDataSet.push(formattedData);
     }
 
+    console.log(importedDataSet);
 
-    if (otherData.value/totalValue > cutoff) {
-        formattedData.push(otherData);
-    }
-
-    callback(formattedData);
+    callback(importedDataRow);
 }
 
 export default ElectricityProductionDataQuery;

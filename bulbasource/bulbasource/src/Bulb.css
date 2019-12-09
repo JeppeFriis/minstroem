@@ -2,7 +2,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40vmin;
+  width: 50vmin;
+  max-width: 400px;
 }
 
 .recharts-wrapper {
@@ -10,7 +11,6 @@
   width: 100vw;
   height: 100vh;
 }
-
 
 #pie-chart-container {
   position: absolute;
@@ -23,5 +23,5 @@
 .recharts-pie-labels {
   color: --dark;
   font-weight: 600;
-  font-size: 2.5vmin;
+  font-size: 2.25vmin;
 }

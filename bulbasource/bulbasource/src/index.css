@@ -13,7 +13,7 @@ code {
 }
 
 .fade-in {
-  animation: fadeInAnimation ease-in 1s;
+  animation: fadeInAnimation ease-in 0.2s;
   animation-iteration-count: 1; 
   animation-fill-mode: forwards; 
 }

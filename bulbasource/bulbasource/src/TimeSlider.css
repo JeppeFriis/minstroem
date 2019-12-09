@@ -1,0 +1,62 @@
+.carousel {
+    position: absolute;
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    overflow: hidden;
+    outline:none;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.carousel:hover {
+    cursor: grab;
+}
+
+.carousel-cell {
+    width: 150px;
+    height: 10vh;
+    min-height: 100px;
+    counter-increment: carousel-cell;
+    text-align: center;
+    color: #adadad;
+    
+}
+
+/* cell number */
+.carousel-cell-hours {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    font-size: calc(10px + 2.5vh);
+
+    -webkit-transition: .2s ease;
+    transition: .2s ease;
+}
+
+.carousel-cell-date {
+    display: block;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: calc((10px + 2.5vh)*0.5);
+    color: #adadad;
+
+    -webkit-transition: .2s ease;
+    transition: .2s ease;
+}
+
+
+
+.carousel-cell.is-selected {
+    color: var(--dark);
+
+    -webkit-transition: .2s ease;
+    transition: .2s ease;
+}
+  

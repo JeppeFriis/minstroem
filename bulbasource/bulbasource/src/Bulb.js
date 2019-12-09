@@ -8,41 +8,9 @@ class Bulb extends React.Component {
         super(props);
 
         this.state = {
-            activeIndex: -1
+            activeIndex: -1,
         }
     }
-
-
-
-    renderActiveShape = (props) => {
-        const RADIAN = Math.PI / 180;
-        const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-            fill, payload, percent, value } = props;
-        const sin = Math.sin(-RADIAN * midAngle);
-        const cos = Math.cos(-RADIAN * midAngle);
-        const sx = cx + (outerRadius + 10) * cos;
-        const sy = cy + (outerRadius + 10) * sin;
-        const mx = cx + (outerRadius + 30) * cos;
-        const my = cy + (outerRadius + 30) * sin;
-        const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-        const ey = my;
-        const textAnchor = cos >= 0 ? 'start' : 'end';
-        
-        return (
-            <g>
-            <Sector
-                cx={cx}
-                cy={cy}
-                innerRadius={innerRadius}
-                outerRadius={outerRadius}
-                startAngle={startAngle}
-                endAngle={endAngle}
-                fill={fill}
-            />
-            
-            </g>
-        );
-    };
 
     renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent, index, fill, fillOpacity}) => {
         const RADIAN = Math.PI / 180;
@@ -62,7 +30,7 @@ class Bulb extends React.Component {
         return (
             <g className="fade-in">
                 <path d={`M${ax},${ay}Q${bx},${by},${zx},${by}`} strokeWidth="2" stroke={fill} fill='none'/>
-                <text x={zx + 0.05* cx * Math.sign(Math.cos(-midAngle * RADIAN))} y={by} fill={fill} textAnchor={zx > cx ? 'start' : 'end'} dominantBaseline="central">
+                <text x={zx + 0.005 * cx * Math.sign(Math.cos(-midAngle * RADIAN))} y={by} fill={fill} textAnchor={zx > cx ? 'start' : 'end'} dominantBaseline="central">
                 {`${this.props.data[index].name}`}
                 </text>
                 <text x={x} y={y} fill='white' fillOpacity="0.30" textAnchor={'middle'} fontSize={"3vmin;"} fontWeight="600" dominantBaseline="central">
@@ -79,9 +47,8 @@ class Bulb extends React.Component {
                 <ResponsiveContainer id="pie-chart-container" width="200%" aspect={1}>
                     <PieChart id="pie-svg">
                         <Pie 
-                            activeIndex={this.state.activeIndex}
-                            activeShape={this.renderActiveShape} 
                             isAnimationActive={true} 
+                            animationDuration={800}
                             data={this.props.data} 
                             outerRadius="47.5%"
                             animationEasing = 'ease'

@@ -5,6 +5,7 @@ import Bulb from './Bulb';
 import Header from './Header'
 import Info from './Info';
 import ElectricityProductionDataQuery from './DataImporter';
+import TimeSlider from './TimeSlider';
 
 
 class App extends React.Component {
@@ -12,32 +13,33 @@ class App extends React.Component {
 	constructor(props) {
         super(props);
         this.state = {
-			data: [[{name: "", value: 0, color: "#222222"}]],
-			infoData: [],
-			showInfo: false
+			data: null,
+			infoData: null,
+			showInfo: false,
+			dataIndex: 0
         };
-
-		this.handleData = this.handleData.bind(this);
-		this.onSourceClick = this.onSourceClick.bind(this);
-		this.onInfoBoxClose = this.onInfoBoxClose.bind(this);
     }
     
 	componentDidMount() {
 		ElectricityProductionDataQuery(this.handleData);
 	}
 
-  	handleData(data) {
+  	handleData = (data) => {
 		this.setState({data: data});
 	}
 
-	onSourceClick(sourceData) {
+	onSourceClick = (sourceData) => {
 		this.setState({
 			infoData: sourceData,
 			showInfo: true
 		})
 	}
 
-	onInfoBoxClose() {
+	onTimeSliderChange = (index) => {
+		this.setState({dataIndex: index}); 
+	}
+
+	onInfoBoxClose = () => {
 		document.documentElement.style = ".info-box-animation"
 
 		this.setState({
@@ -46,11 +48,23 @@ class App extends React.Component {
 	}
 
   	render() {
+		
 		return (
 			<div>
 				<Header></Header>
-				<Bulb data={this.state.data[0]} onSourceClick={this.onSourceClick}></Bulb>
 
+				{this.state.data ? 
+					<Bulb data={this.state.data.dataValues[this.state.dataIndex]} onSourceClick={this.onSourceClick}></Bulb>	
+				:
+					null
+				}
+
+				{this.state.data ? 
+					<TimeSlider dates={this.state.data.dataDates} onTimeSliderChange={this.onTimeSliderChange}></TimeSlider>
+				:
+					null
+				}
+				
 				{this.state.showInfo ? 
 					<Info infoData={this.state.infoData} onInfoBoxClose={this.onInfoBoxClose}></Info>	
 				:

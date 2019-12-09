@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "426a19f98e0b9b819e54f39a4d444b17",
+    "revision": "1eb7f7d487a58a1b009682b127778afd",
     "url": "/minstroem/index.html"
   },
   {

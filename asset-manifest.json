@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/minstroem/static/css/main.5270ee79.chunk.css",
+    "main.css": "/minstroem/static/css/main.87a4cb18.chunk.css",
     "main.js": "/minstroem/static/js/main.23a3a3f2.chunk.js",
     "main.js.map": "/minstroem/static/js/main.23a3a3f2.chunk.js.map",
     "runtime-main.js": "/minstroem/static/js/runtime-main.e90d3b77.js",
@@ -8,15 +8,15 @@
     "static/js/2.9a9e01cc.chunk.js": "/minstroem/static/js/2.9a9e01cc.chunk.js",
     "static/js/2.9a9e01cc.chunk.js.map": "/minstroem/static/js/2.9a9e01cc.chunk.js.map",
     "index.html": "/minstroem/index.html",
-    "precache-manifest.5de97271efb924325c59ac65fcc3c6ef.js": "/minstroem/precache-manifest.5de97271efb924325c59ac65fcc3c6ef.js",
+    "precache-manifest.d8ec6b96c7ffac0a1e0187f780e2b7dd.js": "/minstroem/precache-manifest.d8ec6b96c7ffac0a1e0187f780e2b7dd.js",
     "service-worker.js": "/minstroem/service-worker.js",
-    "static/css/main.5270ee79.chunk.css.map": "/minstroem/static/css/main.5270ee79.chunk.css.map",
+    "static/css/main.87a4cb18.chunk.css.map": "/minstroem/static/css/main.87a4cb18.chunk.css.map",
     "static/media/bulb.png": "/minstroem/static/media/bulb.c2af69a6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e90d3b77.js",
     "static/js/2.9a9e01cc.chunk.js",
-    "static/css/main.5270ee79.chunk.css",
+    "static/css/main.87a4cb18.chunk.css",
     "static/js/main.23a3a3f2.chunk.js"
   ]
 }

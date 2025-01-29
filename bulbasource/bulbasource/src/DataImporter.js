@@ -6,7 +6,7 @@ function ElectricityProductionDataQuery(callback) {
 
 
     $.ajax({
-        url: "https://api.energidataservice.dk/v2/dataset/ElectricityBalanceNonv?filter={\"PriceArea\":\"DK1\"}&sort=HourUTC&limit=24",
+        url: "https://api.energidataservice.dk/dataset/ElectricityBalanceNonv?filter={\"PriceArea\":\"DK1\"}&sort=HourUTC&limit=24",
         dataType: 'jsonp',
         cache: true,
         success: function(data) {
